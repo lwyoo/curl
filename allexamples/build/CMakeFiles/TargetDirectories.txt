@@ -1,0 +1,3 @@
+/home/ldg/CLionProjects/curlTest/allexamples/build/CMakeFiles/testFile.dir
+/home/ldg/CLionProjects/curlTest/allexamples/build/CMakeFiles/edit_cache.dir
+/home/ldg/CLionProjects/curlTest/allexamples/build/CMakeFiles/rebuild_cache.dir

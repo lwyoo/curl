@@ -1,0 +1,1 @@
+/usr/bin/c++  -Wall CMakeFiles/testFile.dir/10-at-a-time.cpp.o -o testFile  -Wl,-rpath,/usr/local/lib /usr/local/lib/libcurl.so 
