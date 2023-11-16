@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/smtp-vrfy.dir/smtp-vrfy.c.o -o smtp-vrfy  -Wl,-rpath,/usr/local/lib /usr/local/lib/libcurl.so 

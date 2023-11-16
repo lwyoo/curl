@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/multi-single.dir/multi-single.c.o -o multi-single  -Wl,-rpath,/usr/local/lib /usr/local/lib/libcurl.so 

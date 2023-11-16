@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/smtp-authzid.dir/smtp-authzid.c.o -o smtp-authzid  -Wl,-rpath,/usr/local/lib /usr/local/lib/libcurl.so 

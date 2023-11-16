@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/postinmemory.dir/postinmemory.c.o -o postinmemory  -Wl,-rpath,/usr/local/lib /usr/local/lib/libcurl.so 

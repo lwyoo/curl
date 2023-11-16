@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/imap-append.dir/imap-append.c.o -o imap-append  -Wl,-rpath,/usr/local/lib /usr/local/lib/libcurl.so 

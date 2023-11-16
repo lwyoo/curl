@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/fileupload.dir/fileupload.c.o -o fileupload  -Wl,-rpath,/usr/local/lib /usr/local/lib/libcurl.so 

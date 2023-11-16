@@ -14,6 +14,15 @@
 # EXTERNAL cache entries
 ########################
 
+//Value Computed by CMake
+10-at-a-time_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build/10-at-a-time
+
+//Value Computed by CMake
+10-at-a-time_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+10-at-a-time_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/10-at-a-time
+
 //Path to a program.
 CMAKE_ADDR2LINE:FILEPATH=/usr/bin/addr2line
 
@@ -145,7 +154,7 @@ CMAKE_PROJECT_DESCRIPTION:STATIC=
 CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=testFile
+CMAKE_PROJECT_NAME:STATIC=MyProject
 
 //Path to a program.
 CMAKE_RANLIB:FILEPATH=/usr/bin/ranlib
@@ -221,23 +230,950 @@ CURL_LIBRARY_DEBUG:FILEPATH=CURL_LIBRARY_DEBUG-NOTFOUND
 //Path to a library.
 CURL_LIBRARY_RELEASE:FILEPATH=/usr/local/lib/libcurl.so
 
+//Value Computed by CMake
+MyProject_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build
+
+//Value Computed by CMake
+MyProject_IS_TOP_LEVEL:STATIC=ON
+
+//Value Computed by CMake
+MyProject_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples
+
 //Arguments to supply to pkg-config
 PKG_CONFIG_ARGN:STRING=
 
 //pkg-config executable
 PKG_CONFIG_EXECUTABLE:FILEPATH=/usr/bin/pkg-config
 
+//Value Computed by CMake
+altsvc_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build/altsvc
+
+//Value Computed by CMake
+altsvc_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+altsvc_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/altsvc
+
+//Value Computed by CMake
+anyauthput_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build/anyauthput
+
+//Value Computed by CMake
+anyauthput_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+anyauthput_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/anyauthput
+
+//Value Computed by CMake
+certinfo_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build/certinfo
+
+//Value Computed by CMake
+certinfo_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+certinfo_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/certinfo
+
+//Value Computed by CMake
+chkspeed_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build/chkspeed
+
+//Value Computed by CMake
+chkspeed_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+chkspeed_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/chkspeed
+
+//Value Computed by CMake
+connect-to_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build/connect-to
+
+//Value Computed by CMake
+connect-to_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+connect-to_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/connect-to
+
+//Value Computed by CMake
+cookie_interface_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build/cookie_interface
+
+//Value Computed by CMake
+cookie_interface_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+cookie_interface_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/cookie_interface
+
+//Value Computed by CMake
+debug_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build/debug
+
+//Value Computed by CMake
+debug_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+debug_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/debug
+
+//Value Computed by CMake
+default-scheme_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build/default-scheme
+
+//Value Computed by CMake
+default-scheme_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+default-scheme_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/default-scheme
+
+//Value Computed by CMake
+ephiperfifo_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build/ephiperfifo
+
+//Value Computed by CMake
+ephiperfifo_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+ephiperfifo_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/ephiperfifo
+
+//Value Computed by CMake
+externalsocket_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build/externalsocket
+
+//Value Computed by CMake
+externalsocket_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+externalsocket_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/externalsocket
+
+//Value Computed by CMake
+fileupload_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build/fileupload
+
+//Value Computed by CMake
+fileupload_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+fileupload_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/fileupload
+
+//Value Computed by CMake
+ftp-wildcard_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build/ftp-wildcard
+
+//Value Computed by CMake
+ftp-wildcard_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+ftp-wildcard_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/ftp-wildcard
+
+//Value Computed by CMake
+ftpget_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build/ftpget
+
+//Value Computed by CMake
+ftpget_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+ftpget_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/ftpget
+
+//Value Computed by CMake
+ftpgetinfo_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build/ftpgetinfo
+
+//Value Computed by CMake
+ftpgetinfo_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+ftpgetinfo_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/ftpgetinfo
+
+//Value Computed by CMake
+ftpgetresp_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build/ftpgetresp
+
+//Value Computed by CMake
+ftpgetresp_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+ftpgetresp_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/ftpgetresp
+
+//Value Computed by CMake
+ftpsget_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build/ftpsget
+
+//Value Computed by CMake
+ftpsget_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+ftpsget_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/ftpsget
+
+//Value Computed by CMake
+ftpupload_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build/ftpupload
+
+//Value Computed by CMake
+ftpupload_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+ftpupload_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/ftpupload
+
+//Value Computed by CMake
+ftpuploadfrommem_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build/ftpuploadfrommem
+
+//Value Computed by CMake
+ftpuploadfrommem_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+ftpuploadfrommem_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/ftpuploadfrommem
+
+//Value Computed by CMake
+ftpuploadresume_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build/ftpuploadresume
+
+//Value Computed by CMake
+ftpuploadresume_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+ftpuploadresume_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/ftpuploadresume
+
+//Value Computed by CMake
+getinfo_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build/getinfo
+
+//Value Computed by CMake
+getinfo_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+getinfo_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/getinfo
+
+//Value Computed by CMake
+getinmemory_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build/getinmemory
+
+//Value Computed by CMake
+getinmemory_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+getinmemory_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/getinmemory
+
+//Value Computed by CMake
+getredirect_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build/getredirect
+
+//Value Computed by CMake
+getredirect_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+getredirect_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/getredirect
+
+//Value Computed by CMake
+getreferrer_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build/getreferrer
+
+//Value Computed by CMake
+getreferrer_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+getreferrer_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/getreferrer
+
+//Value Computed by CMake
+headerapi_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build/headerapi
+
+//Value Computed by CMake
+headerapi_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+headerapi_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/headerapi
+
+//Value Computed by CMake
+hsts-preload_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build/hsts-preload
+
+//Value Computed by CMake
+hsts-preload_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+hsts-preload_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/hsts-preload
+
+//Value Computed by CMake
+http-options_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build/http-options
+
+//Value Computed by CMake
+http-options_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+http-options_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/http-options
+
+//Value Computed by CMake
+http-post_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build/http-post
+
+//Value Computed by CMake
+http-post_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+http-post_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/http-post
+
+//Value Computed by CMake
+http2-download_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build/http2-download
+
+//Value Computed by CMake
+http2-download_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+http2-download_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/http2-download
+
+//Value Computed by CMake
+http2-pushinmemory_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build/http2-pushinmemory
+
+//Value Computed by CMake
+http2-pushinmemory_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+http2-pushinmemory_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/http2-pushinmemory
+
+//Value Computed by CMake
+http2-serverpush_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build/http2-serverpush
+
+//Value Computed by CMake
+http2-serverpush_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+http2-serverpush_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/http2-serverpush
+
+//Value Computed by CMake
+http2-upload_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build/http2-upload
+
+//Value Computed by CMake
+http2-upload_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+http2-upload_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/http2-upload
+
+//Value Computed by CMake
+http3-present_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build/http3-present
+
+//Value Computed by CMake
+http3-present_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+http3-present_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/http3-present
+
+//Value Computed by CMake
+http3_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build/http3
+
+//Value Computed by CMake
+http3_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+http3_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/http3
+
+//Value Computed by CMake
+httpcustomheader_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build/httpcustomheader
+
+//Value Computed by CMake
+httpcustomheader_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+httpcustomheader_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/httpcustomheader
+
+//Value Computed by CMake
+httpput-postfields_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build/httpput-postfields
+
+//Value Computed by CMake
+httpput-postfields_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+httpput-postfields_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/httpput-postfields
+
+//Value Computed by CMake
+httpput_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build/httpput
+
+//Value Computed by CMake
+httpput_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+httpput_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/httpput
+
+//Value Computed by CMake
+https_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build/https
+
+//Value Computed by CMake
+https_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+https_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/https
+
+//Value Computed by CMake
+imap-append_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build/imap-append
+
+//Value Computed by CMake
+imap-append_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+imap-append_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/imap-append
+
+//Value Computed by CMake
+imap-authzid_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build/imap-authzid
+
+//Value Computed by CMake
+imap-authzid_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+imap-authzid_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/imap-authzid
+
+//Value Computed by CMake
+imap-copy_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build/imap-copy
+
+//Value Computed by CMake
+imap-copy_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+imap-copy_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/imap-copy
+
+//Value Computed by CMake
+imap-create_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build/imap-create
+
+//Value Computed by CMake
+imap-create_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+imap-create_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/imap-create
+
+//Value Computed by CMake
+imap-delete_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build/imap-delete
+
+//Value Computed by CMake
+imap-delete_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+imap-delete_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/imap-delete
+
+//Value Computed by CMake
+imap-examine_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build/imap-examine
+
+//Value Computed by CMake
+imap-examine_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+imap-examine_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/imap-examine
+
+//Value Computed by CMake
+imap-fetch_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build/imap-fetch
+
+//Value Computed by CMake
+imap-fetch_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+imap-fetch_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/imap-fetch
+
+//Value Computed by CMake
+imap-list_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build/imap-list
+
+//Value Computed by CMake
+imap-list_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+imap-list_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/imap-list
+
+//Value Computed by CMake
+imap-lsub_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build/imap-lsub
+
+//Value Computed by CMake
+imap-lsub_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+imap-lsub_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/imap-lsub
+
+//Value Computed by CMake
+imap-multi_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build/imap-multi
+
+//Value Computed by CMake
+imap-multi_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+imap-multi_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/imap-multi
+
+//Value Computed by CMake
+imap-noop_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build/imap-noop
+
+//Value Computed by CMake
+imap-noop_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+imap-noop_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/imap-noop
+
+//Value Computed by CMake
+imap-search_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build/imap-search
+
+//Value Computed by CMake
+imap-search_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+imap-search_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/imap-search
+
+//Value Computed by CMake
+imap-ssl_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build/imap-ssl
+
+//Value Computed by CMake
+imap-ssl_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+imap-ssl_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/imap-ssl
+
+//Value Computed by CMake
+imap-store_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build/imap-store
+
+//Value Computed by CMake
+imap-store_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+imap-store_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/imap-store
+
+//Value Computed by CMake
+imap-tls_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build/imap-tls
+
+//Value Computed by CMake
+imap-tls_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+imap-tls_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/imap-tls
+
+//Value Computed by CMake
+ipv6_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build/ipv6
+
+//Value Computed by CMake
+ipv6_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+ipv6_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/ipv6
+
+//Value Computed by CMake
+maxconnects_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build/maxconnects
+
+//Value Computed by CMake
+maxconnects_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+maxconnects_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/maxconnects
+
+//Value Computed by CMake
+multi-app_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build/multi-app
+
+//Value Computed by CMake
+multi-app_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+multi-app_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/multi-app
+
+//Value Computed by CMake
+multi-debugcallback_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build/multi-debugcallback
+
+//Value Computed by CMake
+multi-debugcallback_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+multi-debugcallback_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/multi-debugcallback
+
+//Value Computed by CMake
+multi-double_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build/multi-double
+
+//Value Computed by CMake
+multi-double_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+multi-double_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/multi-double
+
+//Value Computed by CMake
+multi-formadd_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build/multi-formadd
+
+//Value Computed by CMake
+multi-formadd_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+multi-formadd_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/multi-formadd
+
+//Value Computed by CMake
+multi-legacy_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build/multi-legacy
+
+//Value Computed by CMake
+multi-legacy_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+multi-legacy_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/multi-legacy
+
+//Value Computed by CMake
+multi-post_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build/multi-post
+
+//Value Computed by CMake
+multi-post_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+multi-post_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/multi-post
+
+//Value Computed by CMake
+multi-single_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build/multi-single
+
+//Value Computed by CMake
+multi-single_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+multi-single_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/multi-single
+
+//Value Computed by CMake
+multithread_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build/multithread
+
+//Value Computed by CMake
+multithread_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+multithread_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/multithread
+
+//Value Computed by CMake
+parseurl_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build/parseurl
+
+//Value Computed by CMake
+parseurl_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+parseurl_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/parseurl
+
+//Value Computed by CMake
+persistent_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build/persistent
+
+//Value Computed by CMake
+persistent_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+persistent_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/persistent
+
 //Path to a library.
 pkgcfg_lib_PC_CURL_curl:FILEPATH=/usr/local/lib/libcurl.so
 
 //Value Computed by CMake
-testFile_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build
+pop3-authzid_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build/pop3-authzid
 
 //Value Computed by CMake
-testFile_IS_TOP_LEVEL:STATIC=ON
+pop3-authzid_IS_TOP_LEVEL:STATIC=OFF
 
 //Value Computed by CMake
-testFile_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples
+pop3-authzid_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/pop3-authzid
+
+//Value Computed by CMake
+pop3-dele_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build/pop3-dele
+
+//Value Computed by CMake
+pop3-dele_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+pop3-dele_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/pop3-dele
+
+//Value Computed by CMake
+pop3-list_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build/pop3-list
+
+//Value Computed by CMake
+pop3-list_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+pop3-list_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/pop3-list
+
+//Value Computed by CMake
+pop3-multi_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build/pop3-multi
+
+//Value Computed by CMake
+pop3-multi_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+pop3-multi_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/pop3-multi
+
+//Value Computed by CMake
+pop3-noop_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build/pop3-noop
+
+//Value Computed by CMake
+pop3-noop_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+pop3-noop_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/pop3-noop
+
+//Value Computed by CMake
+pop3-retr_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build/pop3-retr
+
+//Value Computed by CMake
+pop3-retr_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+pop3-retr_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/pop3-retr
+
+//Value Computed by CMake
+pop3-ssl_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build/pop3-ssl
+
+//Value Computed by CMake
+pop3-ssl_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+pop3-ssl_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/pop3-ssl
+
+//Value Computed by CMake
+pop3-stat_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build/pop3-stat
+
+//Value Computed by CMake
+pop3-stat_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+pop3-stat_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/pop3-stat
+
+//Value Computed by CMake
+pop3-tls_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build/pop3-tls
+
+//Value Computed by CMake
+pop3-tls_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+pop3-tls_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/pop3-tls
+
+//Value Computed by CMake
+pop3-top_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build/pop3-top
+
+//Value Computed by CMake
+pop3-top_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+pop3-top_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/pop3-top
+
+//Value Computed by CMake
+pop3-uidl_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build/pop3-uidl
+
+//Value Computed by CMake
+pop3-uidl_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+pop3-uidl_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/pop3-uidl
+
+//Value Computed by CMake
+post-callback_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build/post-callback
+
+//Value Computed by CMake
+post-callback_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+post-callback_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/post-callback
+
+//Value Computed by CMake
+postinmemory_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build/postinmemory
+
+//Value Computed by CMake
+postinmemory_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+postinmemory_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/postinmemory
+
+//Value Computed by CMake
+postit2-formadd_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build/postit2-formadd
+
+//Value Computed by CMake
+postit2-formadd_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+postit2-formadd_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/postit2-formadd
+
+//Value Computed by CMake
+postit2_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build/postit2
+
+//Value Computed by CMake
+postit2_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+postit2_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/postit2
+
+//Value Computed by CMake
+progressfunc_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build/progressfunc
+
+//Value Computed by CMake
+progressfunc_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+progressfunc_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/progressfunc
+
+//Value Computed by CMake
+protofeats_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build/protofeats
+
+//Value Computed by CMake
+protofeats_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+protofeats_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/protofeats
+
+//Value Computed by CMake
+resolve_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build/resolve
+
+//Value Computed by CMake
+resolve_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+resolve_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/resolve
+
+//Value Computed by CMake
+sendrecv_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build/sendrecv
+
+//Value Computed by CMake
+sendrecv_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+sendrecv_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/sendrecv
+
+//Value Computed by CMake
+sepheaders_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build/sepheaders
+
+//Value Computed by CMake
+sepheaders_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+sepheaders_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/sepheaders
+
+//Value Computed by CMake
+sftpget_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build/sftpget
+
+//Value Computed by CMake
+sftpget_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+sftpget_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/sftpget
+
+//Value Computed by CMake
+sftpuploadresume_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build/sftpuploadresume
+
+//Value Computed by CMake
+sftpuploadresume_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+sftpuploadresume_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/sftpuploadresume
+
+//Value Computed by CMake
+shared-connection-cache_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build/shared-connection-cache
+
+//Value Computed by CMake
+shared-connection-cache_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+shared-connection-cache_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/shared-connection-cache
+
+//Value Computed by CMake
+simple_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build/simple
+
+//Value Computed by CMake
+simple_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+simple_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/simple
+
+//Value Computed by CMake
+simplepost_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build/simplepost
+
+//Value Computed by CMake
+simplepost_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+simplepost_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/simplepost
+
+//Value Computed by CMake
+simplessl_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build/simplessl
+
+//Value Computed by CMake
+simplessl_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+simplessl_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/simplessl
+
+//Value Computed by CMake
+smtp-authzid_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build/smtp-authzid
+
+//Value Computed by CMake
+smtp-authzid_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+smtp-authzid_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/smtp-authzid
+
+//Value Computed by CMake
+smtp-expn_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build/smtp-expn
+
+//Value Computed by CMake
+smtp-expn_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+smtp-expn_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/smtp-expn
+
+//Value Computed by CMake
+smtp-mail_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build/smtp-mail
+
+//Value Computed by CMake
+smtp-mail_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+smtp-mail_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/smtp-mail
+
+//Value Computed by CMake
+smtp-multi_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build/smtp-multi
+
+//Value Computed by CMake
+smtp-multi_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+smtp-multi_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/smtp-multi
+
+//Value Computed by CMake
+smtp-ssl_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build/smtp-ssl
+
+//Value Computed by CMake
+smtp-ssl_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+smtp-ssl_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/smtp-ssl
+
+//Value Computed by CMake
+smtp-tls_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build/smtp-tls
+
+//Value Computed by CMake
+smtp-tls_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+smtp-tls_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/smtp-tls
+
+//Value Computed by CMake
+smtp-vrfy_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build/smtp-vrfy
+
+//Value Computed by CMake
+smtp-vrfy_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+smtp-vrfy_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/smtp-vrfy
+
+//Value Computed by CMake
+sslbackend_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build/sslbackend
+
+//Value Computed by CMake
+sslbackend_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+sslbackend_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/sslbackend
+
+//Value Computed by CMake
+unixsocket_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build/unixsocket
+
+//Value Computed by CMake
+unixsocket_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+unixsocket_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/unixsocket
+
+//Value Computed by CMake
+url2file_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build/url2file
+
+//Value Computed by CMake
+url2file_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+url2file_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/url2file
+
+//Value Computed by CMake
+urlapi_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build/urlapi
+
+//Value Computed by CMake
+urlapi_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+urlapi_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/urlapi
+
+//Value Computed by CMake
+websocket-cb_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build/websocket-cb
+
+//Value Computed by CMake
+websocket-cb_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+websocket-cb_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/websocket-cb
+
+//Value Computed by CMake
+websocket_BINARY_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/build/websocket
+
+//Value Computed by CMake
+websocket_IS_TOP_LEVEL:STATIC=OFF
+
+//Value Computed by CMake
+websocket_SOURCE_DIR:STATIC=/home/ldg/CLionProjects/curlTest/allexamples/websocket
 
 
 ########################
@@ -344,7 +1280,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=1
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=105
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP

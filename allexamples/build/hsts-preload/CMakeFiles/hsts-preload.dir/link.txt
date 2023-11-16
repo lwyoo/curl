@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/hsts-preload.dir/hsts-preload.c.o -o hsts-preload  -Wl,-rpath,/usr/local/lib /usr/local/lib/libcurl.so 

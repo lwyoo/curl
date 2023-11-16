@@ -16,7 +16,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall")
 
 # 소스 파일
-set(SOURCES ${PROJECT_NAME}.c)
+set(SOURCES ${PROJECT_NAME}.cpp)
 
 # 실행 파일 생성
 add_executable(${PROJECT_NAME} ${SOURCES})
@@ -26,7 +26,7 @@ find_package(CURL REQUIRED)
 
 if(CURL_FOUND)
     # 헤더 파일 및 라이브러리 포함
-    message("find curl~")
+    
     include_directories(${CURL_INCLUDE_DIRS})
     target_link_libraries(${PROJECT_NAME} ${CURL_LIBRARIES})
 else()

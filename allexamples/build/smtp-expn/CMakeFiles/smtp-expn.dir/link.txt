@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/smtp-expn.dir/smtp-expn.c.o -o smtp-expn  -Wl,-rpath,/usr/local/lib /usr/local/lib/libcurl.so 

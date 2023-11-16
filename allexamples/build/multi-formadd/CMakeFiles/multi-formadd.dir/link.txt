@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/multi-formadd.dir/multi-formadd.c.o -o multi-formadd  -Wl,-rpath,/usr/local/lib /usr/local/lib/libcurl.so 

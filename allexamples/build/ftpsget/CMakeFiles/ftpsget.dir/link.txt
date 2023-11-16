@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/ftpsget.dir/ftpsget.c.o -o ftpsget  -Wl,-rpath,/usr/local/lib /usr/local/lib/libcurl.so 

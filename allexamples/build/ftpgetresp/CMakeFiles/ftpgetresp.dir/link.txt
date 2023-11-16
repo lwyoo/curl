@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/ftpgetresp.dir/ftpgetresp.c.o -o ftpgetresp  -Wl,-rpath,/usr/local/lib /usr/local/lib/libcurl.so 

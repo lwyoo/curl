@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/multi-double.dir/multi-double.c.o -o multi-double  -Wl,-rpath,/usr/local/lib /usr/local/lib/libcurl.so 

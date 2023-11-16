@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/ftpupload.dir/ftpupload.c.o -o ftpupload  -Wl,-rpath,/usr/local/lib /usr/local/lib/libcurl.so 

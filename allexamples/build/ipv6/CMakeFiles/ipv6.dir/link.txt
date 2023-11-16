@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/ipv6.dir/ipv6.c.o -o ipv6  -Wl,-rpath,/usr/local/lib /usr/local/lib/libcurl.so 

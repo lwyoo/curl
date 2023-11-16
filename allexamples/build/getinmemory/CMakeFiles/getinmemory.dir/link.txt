@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/getinmemory.dir/getinmemory.c.o -o getinmemory  -Wl,-rpath,/usr/local/lib /usr/local/lib/libcurl.so 

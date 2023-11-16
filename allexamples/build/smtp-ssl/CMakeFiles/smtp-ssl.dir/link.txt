@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/smtp-ssl.dir/smtp-ssl.c.o -o smtp-ssl  -Wl,-rpath,/usr/local/lib /usr/local/lib/libcurl.so 

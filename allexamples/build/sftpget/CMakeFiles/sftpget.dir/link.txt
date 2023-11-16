@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/sftpget.dir/sftpget.c.o -o sftpget  -Wl,-rpath,/usr/local/lib /usr/local/lib/libcurl.so 

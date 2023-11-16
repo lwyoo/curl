@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/http3.dir/http3.c.o -o http3  -Wl,-rpath,/usr/local/lib /usr/local/lib/libcurl.so 

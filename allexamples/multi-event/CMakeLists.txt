@@ -26,7 +26,7 @@ find_package(CURL REQUIRED)
 
 if(CURL_FOUND)
     # 헤더 파일 및 라이브러리 포함
-    message("find curl~")
+    
     include_directories(${CURL_INCLUDE_DIRS})
     target_link_libraries(${PROJECT_NAME} ${CURL_LIBRARIES})
 else()

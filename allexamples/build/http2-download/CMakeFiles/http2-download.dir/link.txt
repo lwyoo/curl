@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/http2-download.dir/http2-download.c.o -o http2-download  -Wl,-rpath,/usr/local/lib /usr/local/lib/libcurl.so 

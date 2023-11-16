@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/persistent.dir/persistent.c.o -o persistent  -Wl,-rpath,/usr/local/lib /usr/local/lib/libcurl.so 

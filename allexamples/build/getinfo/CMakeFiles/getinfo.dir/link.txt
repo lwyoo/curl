@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/getinfo.dir/getinfo.c.o -o getinfo  -Wl,-rpath,/usr/local/lib /usr/local/lib/libcurl.so 

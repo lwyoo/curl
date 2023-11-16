@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/pop3-retr.dir/pop3-retr.c.o -o pop3-retr  -Wl,-rpath,/usr/local/lib /usr/local/lib/libcurl.so 

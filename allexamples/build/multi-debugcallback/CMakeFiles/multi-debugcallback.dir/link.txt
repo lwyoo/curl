@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/multi-debugcallback.dir/multi-debugcallback.c.o -o multi-debugcallback  -Wl,-rpath,/usr/local/lib /usr/local/lib/libcurl.so 

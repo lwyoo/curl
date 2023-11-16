@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/default-scheme.dir/default-scheme.c.o -o default-scheme  -Wl,-rpath,/usr/local/lib /usr/local/lib/libcurl.so 

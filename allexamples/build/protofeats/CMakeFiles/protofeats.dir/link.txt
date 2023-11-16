@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/protofeats.dir/protofeats.c.o -o protofeats  -Wl,-rpath,/usr/local/lib /usr/local/lib/libcurl.so 

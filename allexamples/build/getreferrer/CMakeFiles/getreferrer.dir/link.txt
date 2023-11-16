@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/getreferrer.dir/getreferrer.c.o -o getreferrer  -Wl,-rpath,/usr/local/lib /usr/local/lib/libcurl.so 

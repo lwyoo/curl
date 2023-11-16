@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/getredirect.dir/getredirect.c.o -o getredirect  -Wl,-rpath,/usr/local/lib /usr/local/lib/libcurl.so 

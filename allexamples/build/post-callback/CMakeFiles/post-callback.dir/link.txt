@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/post-callback.dir/post-callback.c.o -o post-callback  -Wl,-rpath,/usr/local/lib /usr/local/lib/libcurl.so 

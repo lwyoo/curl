@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/imap-store.dir/imap-store.c.o -o imap-store  -Wl,-rpath,/usr/local/lib /usr/local/lib/libcurl.so 

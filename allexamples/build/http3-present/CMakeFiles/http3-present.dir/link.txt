@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/http3-present.dir/http3-present.c.o -o http3-present  -Wl,-rpath,/usr/local/lib /usr/local/lib/libcurl.so 

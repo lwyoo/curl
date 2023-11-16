@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/parseurl.dir/parseurl.c.o -o parseurl  -Wl,-rpath,/usr/local/lib /usr/local/lib/libcurl.so 

@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/externalsocket.dir/externalsocket.c.o -o externalsocket  -Wl,-rpath,/usr/local/lib /usr/local/lib/libcurl.so 

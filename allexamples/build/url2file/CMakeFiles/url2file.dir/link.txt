@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/url2file.dir/url2file.c.o -o url2file  -Wl,-rpath,/usr/local/lib /usr/local/lib/libcurl.so 
