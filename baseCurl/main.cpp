@@ -1,123 +1,64 @@
-//#include <iostream>
-//#include <cstdio>
-//#include <curl/curl.h>
-//#include <curl/curlver.h>
-//#include <curl/easy.h>
-//#include <curl/urlapi.h>
-//
-//static size_t write_buffer_callback(char* contents, size_t size, size_t nmemb, std::string* response)
-//{
-//    size_t count = size * nmemb;
-//    if (response != nullptr && count > 0)
-//    {
-//        response->append(contents, count);
-//    }
-//
-//    return count;
-//}
-//
-//int main() {
-//    std::cout << "Hello, World!" << std::endl;
-//    curl_global_init(CURL_GLOBAL_ALL);
-//
-//    CURL* curl = curl_easy_init();
-//    if (curl == nullptr) {
-//        std::cout << "init failed" << std::endl;
-//    } else {
-//        std::cout << "init success" << std::endl;
-//    }
-//
-//    // api URL 설정
-//    static constexpr const char* url = "http://api.blockchain.com/v3/exchange/tickers/";
-//    curl_easy_setopt(curl, CURLOPT_URL, url);
-//
-//    // response 응답 콜백 등록
-//    std::string response;
-//    curl_easy_setopt(curl, CURLOPT_NOPROGRESS, 1L);
-//    curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, write_buffer_callback);
-//    curl_easy_setopt(curl, CURLOPT_WRITEDATA, &response);
-//
-//    // http request 헤더 등록
-//    curl_slist* slist = nullptr;
-//    slist = curl_slist_append(slist, "Accept: application/json");
-//    curl_easy_setopt(curl, CURLOPT_HTTPHEADER, slist);
-//
-//    // http GET 전송
-//    CURLcode err_code = curl_easy_perform(curl);
-//    if (err_code != CURLE_OK)
-//    {
-//        std::cout << "curl_easy_perform failed : " << curl_easy_strerror(err_code) << std::endl;
-//    }
-//
-//    // 응답 코드 및 내용 확인
-//    std::size_t response_code = 0;
-//    curl_easy_getinfo(curl, CURLINFO_RESPONSE_CODE, &response_code);
-//    std::cout << "http response code : " << response_code << std::endl;
-//    std::cout << "http response : " << response << std::endl;
-//
-//    // 리소스 해제
-//    curl_slist_free_all(slist);
-//    curl_easy_cleanup(curl);
-//    curl_global_cleanup();
-//
-//    return 0;
-//}
-
-#include <stdio.h>
+#include <iostream>
 #include <curl/curl.h>
 
-int main(void)
+static size_t WriteCallback(void *ptr, size_t size, size_t nmemb, void *stream)
 {
-    CURL *curl;
+  fwrite(ptr, size, nmemb, (FILE *)stream);
+  return (nmemb*size);
+}
+
+int main() {
+    // libcurl 초기화
+    CURL* curl;
     CURLcode res;
 
     curl_global_init(CURL_GLOBAL_DEFAULT);
-
     curl = curl_easy_init();
-    if(curl) {
-        curl_easy_setopt(curl, CURLOPT_URL, "http://example.com/");
 
-#ifdef SKIP_PEER_VERIFICATION
-        /*
-     * If you want to connect to a site who is not using a certificate that is
-     * signed by one of the certs in the CA bundle you have, you can skip the
-     * verification of the server's certificate. This makes the connection
-     * A LOT LESS SECURE.
-     *
-     * If you have a CA cert for the server stored someplace else than in the
-     * default bundle, then the CURLOPT_CAPATH option might come handy for
-     * you.
-     */
-    curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, 0L);
-#endif
+    if (curl) {
+        // 다운로드할 파일의 URL
+        const char* url = "http://127.0.0.1:5000/download/sdk_artifact.tar.gz";
+        
 
-#ifdef SKIP_HOSTNAME_VERIFICATION
-        /*
-     * If the site you are connecting to uses a different host name that what
-     * they have mentioned in their server certificate's commonName (or
-     * subjectAltName) fields, libcurl will refuse to connect. You can skip
-     * this check, but this will make the connection less secure.
-     */
-    curl_easy_setopt(curl, CURLOPT_SSL_VERIFYHOST, 0L);
-#endif
+        // 저장할 로컬 파일의 경로와 이름
+        const char* localFileName = "downloaded_file.zip";
 
-        /* cache the CA cert bundle in memory for a week */
-        curl_easy_setopt(curl, CURLOPT_CA_CACHE_TIMEOUT, 604800L);
-//        curl_easy_setopt(curl, CURLOPT_VERBOSE, 1L);
-//        curl_easy_setopt(curl, CURLOPT_HEADER, 1L);
-        curl_easy_setopt(curl, CURLOPT_NOPROGRESS, 0L);
+        // 파일을 저장할 FILE 포인터
+        FILE* fp = fopen(localFileName, "wb");
+        if (!fp) {
+            std::cerr << "Error opening file for writing" << std::endl;
+            return 1;
+        }
 
-        /* Perform the request, res will get the return code */
+        // libcurl 설정
+        curl_easy_setopt(curl, CURLOPT_URL, url);
+        curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WriteCallback);
+        curl_easy_setopt(curl, CURLOPT_WRITEDATA, fp);
+
+        // 파일 다운로드 실행
         res = curl_easy_perform(curl);
-        /* Check for errors */
-        if(res != CURLE_OK)
-            fprintf(stderr, "curl_easy_perform() failed: %s\n",
-                    curl_easy_strerror(res));
+        if (res != CURLE_OK) {
+            std::cerr << "Failed to download file: " << curl_easy_strerror(res) << std::endl;
+            return 1;
+        }
 
-        /* always cleanup */
+        // 리소스 정리
+        fclose(fp);
         curl_easy_cleanup(curl);
+
+        if (res != CURLE_OK) {
+            std::cerr << "Failed to download file: " << curl_easy_strerror(res) << std::endl;
+            return 1;
+        }
+
+        std::cout << "File downloaded successfully!" << std::endl;
+    } else {
+        std::cerr << "Failed to initialize libcurl" << std::endl;
+        return 1;
     }
 
+    // libcurl 종료
     curl_global_cleanup();
+
     return 0;
 }
