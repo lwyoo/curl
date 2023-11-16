@@ -1,1 +1,0 @@
-/usr/bin/cc CMakeFiles/websocket.dir/websocket.c.o -o websocket  -Wl,-rpath,/usr/local/lib /usr/local/lib/libcurl.so 

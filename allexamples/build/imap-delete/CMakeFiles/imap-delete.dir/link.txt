@@ -1,1 +1,0 @@
-/usr/bin/cc CMakeFiles/imap-delete.dir/imap-delete.c.o -o imap-delete  -Wl,-rpath,/usr/local/lib /usr/local/lib/libcurl.so 

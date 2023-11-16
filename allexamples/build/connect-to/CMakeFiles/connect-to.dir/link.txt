@@ -1,1 +1,0 @@
-/usr/bin/cc CMakeFiles/connect-to.dir/connect-to.c.o -o connect-to  -Wl,-rpath,/usr/local/lib /usr/local/lib/libcurl.so 

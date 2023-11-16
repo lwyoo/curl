@@ -1,1 +1,0 @@
-/usr/bin/cc CMakeFiles/ftp-wildcard.dir/ftp-wildcard.c.o -o ftp-wildcard  -Wl,-rpath,/usr/local/lib /usr/local/lib/libcurl.so 

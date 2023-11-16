@@ -1,1 +1,0 @@
-/usr/bin/cc CMakeFiles/postit2.dir/postit2.c.o -o postit2  -Wl,-rpath,/usr/local/lib /usr/local/lib/libcurl.so 

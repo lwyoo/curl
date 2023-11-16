@@ -1,1 +1,0 @@
-/usr/bin/cc CMakeFiles/httpput.dir/httpput.c.o -o httpput  -Wl,-rpath,/usr/local/lib /usr/local/lib/libcurl.so 

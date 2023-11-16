@@ -1,1 +1,0 @@
-/usr/bin/cc CMakeFiles/maxconnects.dir/maxconnects.c.o -o maxconnects  -Wl,-rpath,/usr/local/lib /usr/local/lib/libcurl.so 

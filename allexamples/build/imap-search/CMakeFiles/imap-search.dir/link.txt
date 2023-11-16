@@ -1,1 +1,0 @@
-/usr/bin/cc CMakeFiles/imap-search.dir/imap-search.c.o -o imap-search  -Wl,-rpath,/usr/local/lib /usr/local/lib/libcurl.so 

@@ -1,1 +1,0 @@
-/usr/bin/cc CMakeFiles/certinfo.dir/certinfo.c.o -o certinfo  -Wl,-rpath,/usr/local/lib /usr/local/lib/libcurl.so 

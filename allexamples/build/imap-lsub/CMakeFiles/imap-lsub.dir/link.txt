@@ -1,1 +1,0 @@
-/usr/bin/cc CMakeFiles/imap-lsub.dir/imap-lsub.c.o -o imap-lsub  -Wl,-rpath,/usr/local/lib /usr/local/lib/libcurl.so 

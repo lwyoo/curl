@@ -1,1 +1,0 @@
-/usr/bin/cc CMakeFiles/sftpuploadresume.dir/sftpuploadresume.c.o -o sftpuploadresume  -Wl,-rpath,/usr/local/lib /usr/local/lib/libcurl.so 

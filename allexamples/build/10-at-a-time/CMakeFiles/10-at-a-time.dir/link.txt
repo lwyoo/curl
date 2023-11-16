@@ -1,1 +1,0 @@
-/usr/bin/cc CMakeFiles/10-at-a-time.dir/10-at-a-time.c.o -o 10-at-a-time  -Wl,-rpath,/usr/local/lib /usr/local/lib/libcurl.so 

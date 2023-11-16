@@ -1,1 +1,0 @@
-/usr/bin/cc CMakeFiles/http-post.dir/http-post.c.o -o http-post  -Wl,-rpath,/usr/local/lib /usr/local/lib/libcurl.so 

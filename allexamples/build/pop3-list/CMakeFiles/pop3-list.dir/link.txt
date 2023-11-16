@@ -1,1 +1,0 @@
-/usr/bin/cc CMakeFiles/pop3-list.dir/pop3-list.c.o -o pop3-list  -Wl,-rpath,/usr/local/lib /usr/local/lib/libcurl.so 

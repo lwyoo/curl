@@ -1,1 +1,0 @@
-/usr/bin/cc CMakeFiles/sendrecv.dir/sendrecv.c.o -o sendrecv  -Wl,-rpath,/usr/local/lib /usr/local/lib/libcurl.so 

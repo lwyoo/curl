@@ -1,1 +1,0 @@
-/usr/bin/cc CMakeFiles/simplepost.dir/simplepost.c.o -o simplepost  -Wl,-rpath,/usr/local/lib /usr/local/lib/libcurl.so 

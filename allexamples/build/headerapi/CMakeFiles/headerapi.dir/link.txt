@@ -1,1 +1,0 @@
-/usr/bin/cc CMakeFiles/headerapi.dir/headerapi.c.o -o headerapi  -Wl,-rpath,/usr/local/lib /usr/local/lib/libcurl.so 

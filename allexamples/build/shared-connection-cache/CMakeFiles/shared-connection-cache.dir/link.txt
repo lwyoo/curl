@@ -1,1 +1,0 @@
-/usr/bin/cc CMakeFiles/shared-connection-cache.dir/shared-connection-cache.c.o -o shared-connection-cache  -Wl,-rpath,/usr/local/lib /usr/local/lib/libcurl.so 

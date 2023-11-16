@@ -1,1 +1,0 @@
-/usr/bin/cc CMakeFiles/multi-app.dir/multi-app.c.o -o multi-app  -Wl,-rpath,/usr/local/lib /usr/local/lib/libcurl.so 

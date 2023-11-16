@@ -1,1 +1,0 @@
-/usr/bin/cc CMakeFiles/multithread.dir/multithread.c.o -o multithread  -Wl,-rpath,/usr/local/lib /usr/local/lib/libcurl.so 

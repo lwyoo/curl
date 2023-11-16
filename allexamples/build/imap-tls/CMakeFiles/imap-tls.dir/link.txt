@@ -1,1 +1,0 @@
-/usr/bin/cc CMakeFiles/imap-tls.dir/imap-tls.c.o -o imap-tls  -Wl,-rpath,/usr/local/lib /usr/local/lib/libcurl.so 

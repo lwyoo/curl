@@ -1,1 +1,0 @@
-/usr/bin/cc CMakeFiles/http2-upload.dir/http2-upload.c.o -o http2-upload  -Wl,-rpath,/usr/local/lib /usr/local/lib/libcurl.so 

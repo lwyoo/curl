@@ -1,1 +1,0 @@
-/usr/bin/cc CMakeFiles/smtp-mail.dir/smtp-mail.c.o -o smtp-mail  -Wl,-rpath,/usr/local/lib /usr/local/lib/libcurl.so 

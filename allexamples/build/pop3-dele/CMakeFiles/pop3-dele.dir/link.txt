@@ -1,1 +1,0 @@
-/usr/bin/cc CMakeFiles/pop3-dele.dir/pop3-dele.c.o -o pop3-dele  -Wl,-rpath,/usr/local/lib /usr/local/lib/libcurl.so 

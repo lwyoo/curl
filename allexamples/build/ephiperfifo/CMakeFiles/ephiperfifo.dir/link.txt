@@ -1,1 +1,0 @@
-/usr/bin/cc CMakeFiles/ephiperfifo.dir/ephiperfifo.c.o -o ephiperfifo  -Wl,-rpath,/usr/local/lib /usr/local/lib/libcurl.so 

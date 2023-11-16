@@ -1,1 +1,0 @@
-/usr/bin/cc CMakeFiles/multi-post.dir/multi-post.c.o -o multi-post  -Wl,-rpath,/usr/local/lib /usr/local/lib/libcurl.so 

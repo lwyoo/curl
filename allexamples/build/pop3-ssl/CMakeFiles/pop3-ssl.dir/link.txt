@@ -1,1 +1,0 @@
-/usr/bin/cc CMakeFiles/pop3-ssl.dir/pop3-ssl.c.o -o pop3-ssl  -Wl,-rpath,/usr/local/lib /usr/local/lib/libcurl.so 

@@ -1,1 +1,0 @@
-/usr/bin/cc CMakeFiles/imap-examine.dir/imap-examine.c.o -o imap-examine  -Wl,-rpath,/usr/local/lib /usr/local/lib/libcurl.so 

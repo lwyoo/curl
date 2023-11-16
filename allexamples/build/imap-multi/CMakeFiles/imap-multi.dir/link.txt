@@ -1,1 +1,0 @@
-/usr/bin/cc CMakeFiles/imap-multi.dir/imap-multi.c.o -o imap-multi  -Wl,-rpath,/usr/local/lib /usr/local/lib/libcurl.so 

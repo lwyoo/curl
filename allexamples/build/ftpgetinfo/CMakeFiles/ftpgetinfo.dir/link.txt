@@ -1,1 +1,0 @@
-/usr/bin/cc CMakeFiles/ftpgetinfo.dir/ftpgetinfo.c.o -o ftpgetinfo  -Wl,-rpath,/usr/local/lib /usr/local/lib/libcurl.so 

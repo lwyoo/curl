@@ -1,1 +1,0 @@
-/usr/bin/cc CMakeFiles/imap-noop.dir/imap-noop.c.o -o imap-noop  -Wl,-rpath,/usr/local/lib /usr/local/lib/libcurl.so 

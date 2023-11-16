@@ -1,1 +1,0 @@
-/usr/bin/cc CMakeFiles/sepheaders.dir/sepheaders.c.o -o sepheaders  -Wl,-rpath,/usr/local/lib /usr/local/lib/libcurl.so 

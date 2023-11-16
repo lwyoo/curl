@@ -1,1 +1,0 @@
-/usr/bin/cc CMakeFiles/debug.dir/debug.c.o -o debug  -Wl,-rpath,/usr/local/lib /usr/local/lib/libcurl.so 

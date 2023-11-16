@@ -1,1 +1,0 @@
-/usr/bin/cc CMakeFiles/unixsocket.dir/unixsocket.c.o -o unixsocket  -Wl,-rpath,/usr/local/lib /usr/local/lib/libcurl.so 

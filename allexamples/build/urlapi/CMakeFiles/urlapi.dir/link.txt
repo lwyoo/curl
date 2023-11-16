@@ -1,1 +1,0 @@
-/usr/bin/cc CMakeFiles/urlapi.dir/urlapi.c.o -o urlapi  -Wl,-rpath,/usr/local/lib /usr/local/lib/libcurl.so 
