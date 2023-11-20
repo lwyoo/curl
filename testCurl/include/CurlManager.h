@@ -4,6 +4,7 @@
 #include <string>
 #include <vector>
 #include <iostream>
+#include "ThreadPool.hpp"
 
 enum class RequestType {
     USER_TOKEN,
@@ -81,5 +82,5 @@ class CurlManager {
     std::string mUserTokenUrl;
     std::string mCachePath;
     ICurlManagerListner* mListener;
-    // ThreadPool pool;
+    ThreadPool pool;
 };

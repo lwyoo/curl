@@ -17,7 +17,7 @@ using json = nlohmann::json;
 
 // CurlManager::MultiStreamingImpl() : pool(30) {
 // }
-CurlManager::CurlManager() {
+CurlManager::CurlManager() : pool(30) {
 }
 
 CurlManager::~CurlManager() {
@@ -191,7 +191,7 @@ static size_t WriteMemoryCallback(void *ptr, size_t size, size_t nmemb, void *st
 int CurlManager::request(const std::string &url, const RequestType &type, const std::string &inputJson) {
     int ret = 0;
 
-    auto testFunction([&](const std::string &_url, const RequestType &_type, const std::string &_inputJson) {
+    pool.enqueue([&](const std::string &_url, const RequestType &_type, const std::string &_inputJson) {
         // struct MemoryStruct chunk;
         // chunk.memory = (char *)malloc(1);
         // chunk.size = 0;
@@ -238,10 +238,9 @@ int CurlManager::request(const std::string &url, const RequestType &type, const 
         }
 
         onResponseUpdated(_type, static_cast<int>(res_code), "");
-    });
-
-    testFunction(url, type, inputJson);
-
+    }, url, type, inputJson);
+    // testFunction(url, type, inputJson);
+    std::cout << "test ~~~~~~~~~~~~~~~~" << std::endl;
     return ret;
 }
 

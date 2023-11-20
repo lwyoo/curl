@@ -14,6 +14,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall")
 # 소스 파일
 # set(SOURCES main.cpp)
 aux_source_directory(src SOURCES)
+aux_source_directory(interface SOURCES)
 
 # 실행 파일 생성
 add_executable(${PROJECT_NAME} ${SOURCES})
@@ -27,6 +28,7 @@ if(CURL_FOUND)
     
     include_directories(${CURL_INCLUDE_DIRS})
     include_directories (include ${CURL_INCLUDE_DIRS})
+    include_directories(interface ${CURL_INCLUDE_DIRS})
     target_link_libraries(${PROJECT_NAME} ${CURL_LIBRARIES})
 else()
     message(FATAL_ERROR "CURL 라이브러리를 찾을 수 없습니다.")
