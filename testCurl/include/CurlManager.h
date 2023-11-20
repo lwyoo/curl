@@ -3,6 +3,8 @@
 #include <cstdint>
 #include <string>
 #include <vector>
+#include <iostream>
+
 enum class RequestType {
     USER_TOKEN,
     SERVICE_LIST,
@@ -39,6 +41,19 @@ class ICurlManagerListner {
      */
     virtual void onImageDownloaded(const std::string& category, const HUInt32& index, const std::string& pathUrl, const Result& result) = 0;
 };
+
+
+class CurlManagerListner : public ICurlManagerListner {
+   public:
+    void onResponseUpdated(const RequestType& type, const HUInt32& code, const std::string& outputJson) override {
+        std::cout << "onResponseUpdated RequestType : " <<  static_cast<int>(type) << ", code: " << code << ", outputJson: " << outputJson << std::endl;
+
+    };
+    void onImageDownloaded(const std::string& category, const HUInt32& index, const std::string& pathUrl, const Result& result) override {
+        std::cout << "onImageDownloaded category : " << category << ", index : " << index << ", pathUrl : " << pathUrl << ", result : " << static_cast<int>(result) << std::endl;
+    };
+};
+
 
 class CurlManager {
    public:

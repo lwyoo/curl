@@ -31,6 +31,7 @@ Result CurlManager::initialize() {
     std::string cloudUrl = "";
     std::string cloudName = "";
     std::string backendMount = "";
+    curl_global_init(CURL_GLOBAL_DEFAULT);
 
     try {
         // std::ifstream in(mCinemoJsonPath);
@@ -47,17 +48,18 @@ Result CurlManager::initialize() {
         // mServiceListUrl = j.at("identityList");
         // mUserTokenUrl = j.at("identityUserToken");
         // backendMount = j.at("backendMount");
+        mServiceListUrl = "http://127.0.0.1:5000/download/sdk_artifact.tar.gz";
 
     } catch (json::exception &e) {
         HError() << "Json parser error! \n";
     }
 
-    int result = mkdir(mCachePath.c_str(), 0755);
-    if (result == 0) {
-        //HInfo() << "Created cache folder";
-    } else {
-        //HInfo() << strerror(errno);
-    }
+    // int result = mkdir(mCachePath.c_str(), 0755);
+    // if (result == 0) {
+    //     //HInfo() << "Created cache folder";
+    // } else {
+    //     //HInfo() << strerror(errno);
+    // }
 
     return Result::OK;
 }
@@ -102,33 +104,50 @@ struct MemoryStruct {
     size_t size;
 };
 
-static size_t WriteMemoryCallback(void *contents, size_t size, size_t nmemb, void *userp) {
-    size_t realsize = size * nmemb;
-    struct MemoryStruct *mem = (struct MemoryStruct *)userp;
+// static size_t WriteMemoryCallback(void *contents, size_t size, size_t nmemb, void *userp) {
+//     std::cout << "WriteMemoryCallback" << std::endl;
+//     size_t realsize = size * nmemb;
+//     struct MemoryStruct *mem = (struct MemoryStruct *)userp;
 
-    mem->memory = (char *)realloc(mem->memory, mem->size + realsize + 1);
-    if (mem->memory == NULL) {
-        /* out of memory! */
-        HError() << "not enough memory (realloc returned NULL) \n";
-        return 0;
-    }
+//     mem->memory = (char *)realloc(mem->memory, mem->size + realsize + 1);
+//     if (mem->memory == NULL) {
+//         /* out of memory! */
+//         HError() << "not enough memory (realloc returned NULL) \n";
+//         return 0;
+//     }
 
-    memcpy(&(mem->memory[mem->size]), contents, realsize);
-    mem->size += realsize;
-    mem->memory[mem->size] = 0;
+//     memcpy(&(mem->memory[mem->size]), contents, realsize);
+//     mem->size += realsize;
+//     mem->memory[mem->size] = 0;
 
-    return realsize;
+//     return realsize;
+// }
+static size_t WriteMemoryCallback(void *ptr, size_t size, size_t nmemb, void *stream)
+{
+  fwrite(ptr, size, nmemb, (FILE *)stream);
+  return (nmemb*size);
 }
+
 
 // int CurlManager::request(const std::string &url, const RequestType &type, const std::string &inputJson) {
 //     int ret = 0;
-//     pool.enqueue([&](const std::string &_url, const RequestType &_type, const std::string &_inputJson) {
-//         struct MemoryStruct chunk;
-//         chunk.memory = (char *)malloc(1);
-//         chunk.size = 0;
+
+//     auto testFunction([&](const std::string &_url, const RequestType &_type, const std::string &_inputJson) {
+//         // struct MemoryStruct chunk;
+//         // chunk.memory = (char *)malloc(1);
+//         // chunk.size = 0;
+
+//         const char* localFileName = "downloaded_file.zip";
+//         FILE* fp = fopen(localFileName, "wb");
+//         if (!fp) {
+//             std::cerr << "Error opening file for writing" << std::endl;
+//             return 1;
+//         }
 
 //         struct curl_slist *headerlist = nullptr;
-//         headerlist = curl_slist_append(headerlist, "Content-Type: application/json");
+//         // headerlist = curl_slist_append(headerlist, "Content-Type: application/json");
+//         headerlist = curl_slist_append(headerlist, "Content-Type: application/x-tar");
+//         headerlist = curl_slist_append(headerlist, "Content-Encoding: gzip");
 
 //         CURL *curlCtx = curl_easy_init();
 //         curl_easy_setopt(curlCtx, CURLOPT_URL, _url.c_str());
@@ -136,7 +155,8 @@ static size_t WriteMemoryCallback(void *contents, size_t size, size_t nmemb, voi
 //         curl_easy_setopt(curlCtx, CURLOPT_SSL_VERIFYPEER, false);
 //         curl_easy_setopt(curlCtx, CURLOPT_SSL_VERIFYHOST, false);
 //         curl_easy_setopt(curlCtx, CURLOPT_WRITEFUNCTION, WriteMemoryCallback);
-//         curl_easy_setopt(curlCtx, CURLOPT_WRITEDATA, (void *)&chunk);
+//         // curl_easy_setopt(curlCtx, CURLOPT_WRITEDATA, (void *)&chunk);
+//         curl_easy_setopt(curlCtx, CURLOPT_WRITEDATA, fp);
 
 //         if (_type == RequestType::USER_TOKEN) {
 //             curl_easy_setopt(curlCtx, CURLOPT_POST, 1L);
@@ -158,55 +178,60 @@ static size_t WriteMemoryCallback(void *contents, size_t size, size_t nmemb, voi
 //             curl_slist_free_all(headerlist);
 //         }
 
-//         onResponseUpdated(_type, static_cast<int>(res_code), chunk.memory);
-//     },
-//                  url, type, inputJson);
+//         onResponseUpdated(_type, static_cast<int>(res_code), "");
+//     });
+
+//     testFunction(url, type, inputJson);
 
 //     return ret;
 // }
-int CurlManager::request(const std::string &url, const RequestType &type, const std::string &inputJson) {
+
+
+int CurlManager::request(const std::string &_url, const RequestType &_type, const std::string &_inputJson) {
     int ret = 0;
 
-    auto testFunction([&](const std::string &_url, const RequestType &_type, const std::string &_inputJson) {
-        struct MemoryStruct chunk;
-        chunk.memory = (char *)malloc(1);
-        chunk.size = 0;
+    const char* localFileName = "downloaded_file.zip";
+    FILE* fp = fopen(localFileName, "wb");
+    if (!fp) {
+        std::cerr << "Error opening file for writing" << std::endl;
+        return 1;
+    }
 
-        struct curl_slist *headerlist = nullptr;
-        headerlist = curl_slist_append(headerlist, "Content-Type: application/json");
+    std::cerr << "error 1" << std::endl;
 
-        CURL *curlCtx = curl_easy_init();
-        curl_easy_setopt(curlCtx, CURLOPT_URL, _url.c_str());
-        curl_easy_setopt(curlCtx, CURLOPT_HTTPHEADER, headerlist);
-        curl_easy_setopt(curlCtx, CURLOPT_SSL_VERIFYPEER, false);
-        curl_easy_setopt(curlCtx, CURLOPT_SSL_VERIFYHOST, false);
-        curl_easy_setopt(curlCtx, CURLOPT_WRITEFUNCTION, WriteMemoryCallback);
-        curl_easy_setopt(curlCtx, CURLOPT_WRITEDATA, (void *)&chunk);
+    CURL *curlCtx = curl_easy_init();
+    if (curlCtx) {
+        std::cerr << "error 2 - 1" << std::endl;
+    } else {
+        std::cerr << "error 2 - 2" << std::endl;
+    }
+    curl_easy_setopt(curlCtx, CURLOPT_URL, _url.c_str());
+    curl_easy_setopt(curlCtx, CURLOPT_WRITEFUNCTION, WriteMemoryCallback);
+    curl_easy_setopt(curlCtx, CURLOPT_WRITEDATA, fp);
 
-        if (_type == RequestType::USER_TOKEN) {
-            curl_easy_setopt(curlCtx, CURLOPT_POST, 1L);
-            curl_easy_setopt(curlCtx, CURLOPT_POSTFIELDS, _inputJson.c_str());
+    long res_code = 0;
+    std::cerr << "error 2" << std::endl;
+
+    CURLcode rc = curl_easy_perform(curlCtx);
+
+    std::cerr << "error 3" << std::endl;
+    if (rc != CURLE_OK) {
+        HError() << "Failed \n";
+        ret = -1;
+    } else {
+        std::cerr << "error 4" << std::endl;
+        curl_easy_getinfo(curlCtx, CURLINFO_RESPONSE_CODE, &res_code);
+        if (!((res_code == 200 || res_code == 201))) {
+            HError() << "!!! Response code:" << res_code << "\n";
         }
+        curl_easy_cleanup(curlCtx);
 
-        long res_code = 0;
+        std::cerr << "error 5" << std::endl;
+        // curl_slist_free_all(headerlist);
+    }
 
-        CURLcode rc = curl_easy_perform(curlCtx);
-        if (rc) {
-            HError() << "Failed \n";
-            ret = -1;
-        } else {
-            curl_easy_getinfo(curlCtx, CURLINFO_RESPONSE_CODE, &res_code);
-            if (!((res_code == 200 || res_code == 201))) {
-                HError() << "!!! Response code:" << res_code << "\n";
-            }
-            curl_easy_cleanup(curlCtx);
-            curl_slist_free_all(headerlist);
-        }
-
-        onResponseUpdated(_type, static_cast<int>(res_code), chunk.memory);
-    });
-
-    testFunction(url, type, inputJson);
+    std::cerr << "error 6" << std::endl;
+    onResponseUpdated(_type, static_cast<int>(res_code), "");
 
     return ret;
 }
