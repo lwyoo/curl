@@ -1,9 +1,13 @@
 #pragma once
 // #include <threadpool/ThreadPool.hpp>
+#include <QObject>
+#include <QQmlEngine>
+
 #include <cstdint>
 #include <string>
 #include <vector>
 #include <iostream>
+
 #include "ThreadPool.hpp"
 
 enum class RequestType {
@@ -56,13 +60,19 @@ class CurlManagerListner : public ICurlManagerListner {
 };
 
 
-class CurlManager {
+class CurlManager : public QObject {
+    Q_OBJECT
    public:
+    static CurlManager* getInstance();
+    static QObject* qmlInstance(QQmlEngine* engine, QJSEngine* jsEngine);
     void setEventListener(ICurlManagerListner* listener);
     Result initialize();
     Result finalize();
     Result requestCloud(const RequestType& type, const std::string& inputJson = "");
     Result requestImageDownload(const std::string& category, const HUInt32& index, const std::string& requestUrl);
+    Q_INVOKABLE int request(const std::string& url, const RequestType& type, const std::string& inputJson = "");
+    Q_INVOKABLE int requestForQml(const QString& url, const int& type, const QString& inputJson);
+    Q_INVOKABLE void testFunction();
 
     CurlManager();
     ~CurlManager();
@@ -71,7 +81,6 @@ class CurlManager {
     void onResponseUpdated(const RequestType& type, const HUInt32& code, const std::string& outputJson);
     void onImageDownloaded(const std::string& category, const HUInt32& index, const std::string& pathUrl, const Result& result);
 
-    int request(const std::string& url, const RequestType& type, const std::string& inputJson = "");
     void downloadImage(const std::vector<std::string>& urlList);
     void downloadOneImage(const std::string& category, const HUInt32& index, const std::string& requestUrl);
     std::string split(std::string origin, const std::string &delimiter, const bool frontErase);
@@ -83,4 +92,5 @@ class CurlManager {
     std::string mCachePath;
     ICurlManagerListner* mListener;
     ThreadPool pool;
+    static CurlManager* instance;
 };

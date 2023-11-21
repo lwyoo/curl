@@ -30,6 +30,7 @@ qt_add_qml_module(appcurlWithHMI
     VERSION 1.0
     QML_FILES Main.qml
     SOURCES include/CurlManager.h interface/ThreadPool.hpp src/CurlManager.cpp
+    QML_FILES MyButton.qml
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.

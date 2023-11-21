@@ -11,7 +11,7 @@
 
 #include <iostream>
 using json = nlohmann::json;
-
+CurlManager* CurlManager::instance = nullptr;
 // Temp log should be changed to Logger
 #define HError() std::cout << "[" << __PRETTY_FUNCTION__ << ":" << __LINE__ << "] "
 
@@ -21,6 +21,19 @@ CurlManager::CurlManager() : pool(30) {
 }
 
 CurlManager::~CurlManager() {
+}
+
+CurlManager *CurlManager::getInstance() {
+    if (instance == nullptr) {
+        instance = new CurlManager();
+    }
+    return instance;
+}
+QObject* CurlManager::qmlInstance(QQmlEngine* engine, QJSEngine* jsEngine) {
+    Q_UNUSED(engine);
+    Q_UNUSED(jsEngine);
+
+    return CurlManager::getInstance();
 }
 
 void CurlManager::setEventListener(ICurlManagerListner *listener) {
@@ -124,8 +137,8 @@ struct MemoryStruct {
 // }
 static size_t WriteMemoryCallback(void *ptr, size_t size, size_t nmemb, void *stream)
 {
-  fwrite(ptr, size, nmemb, (FILE *)stream);
-  return (nmemb*size);
+    fwrite(ptr, size, nmemb, (FILE *)stream);
+    return (nmemb*size);
 }
 
 
@@ -244,6 +257,69 @@ int CurlManager::request(const std::string &url, const RequestType &type, const 
     return ret;
 }
 
+int CurlManager::requestForQml(const QString &url, const int &type, const QString &inputJson) {
+    int ret = 0;
+    // 이제 qString을 사용할 수 있습니다.
+    std::string stdStringUrl = url.toStdString();
+    std::string stdStringInputJson = inputJson.toStdString();
+
+    pool.enqueue([&](const std::string &_url, const int &_type, const std::string &_inputJson) {
+        // struct MemoryStruct chunk;
+        // chunk.memory = (char *)malloc(1);
+        // chunk.size = 0;
+
+        const char* localFileName = "downloaded_file.zip";
+        FILE* fp = fopen(localFileName, "wb");
+        if (!fp) {
+            std::cerr << "Error opening file for writing" << std::endl;
+            return 1;
+        }
+
+        struct curl_slist *headerlist = nullptr;
+        // headerlist = curl_slist_append(headerlist, "Content-Type: application/json");
+        headerlist = curl_slist_append(headerlist, "Content-Type: application/x-tar");
+        headerlist = curl_slist_append(headerlist, "Content-Encoding: gzip");
+
+        CURL *curlCtx = curl_easy_init();
+        curl_easy_setopt(curlCtx, CURLOPT_URL, _url.c_str());
+        curl_easy_setopt(curlCtx, CURLOPT_HTTPHEADER, headerlist);
+        curl_easy_setopt(curlCtx, CURLOPT_SSL_VERIFYPEER, false);
+        curl_easy_setopt(curlCtx, CURLOPT_SSL_VERIFYHOST, false);
+        curl_easy_setopt(curlCtx, CURLOPT_WRITEFUNCTION, WriteMemoryCallback);
+        // curl_easy_setopt(curlCtx, CURLOPT_WRITEDATA, (void *)&chunk);
+        curl_easy_setopt(curlCtx, CURLOPT_WRITEDATA, fp);
+
+        if (_type == static_cast<int>(RequestType::USER_TOKEN)) {
+            curl_easy_setopt(curlCtx, CURLOPT_POST, 1L);
+            curl_easy_setopt(curlCtx, CURLOPT_POSTFIELDS, _inputJson.c_str());
+        }
+
+        long res_code = 0;
+
+        CURLcode rc = curl_easy_perform(curlCtx);
+        if (rc) {
+            HError() << "Failed \n";
+            ret = -1;
+        } else {
+            curl_easy_getinfo(curlCtx, CURLINFO_RESPONSE_CODE, &res_code);
+            if (!((res_code == 200 || res_code == 201))) {
+                HError() << "!!! Response code:" << res_code << "\n";
+            }
+            curl_easy_cleanup(curlCtx);
+            curl_slist_free_all(headerlist);
+        }
+
+        onResponseUpdated(static_cast<RequestType>(_type), static_cast<int>(res_code), "");
+    }, stdStringUrl, type, stdStringInputJson);
+    // testFunction(url, type, inputJson);
+    std::cout << "test ~~~~~~~~~~~~~~~~" << std::endl;
+    return ret;
+}
+
+void CurlManager::testFunction() {
+    std::cout << "~~~~~~~~" << std::endl;
+}
+
 std::string CurlManager::split(std::string origin, const std::string &delimiter, const bool frontErase) {
     size_t pos = 0;
     std::string newPath = "";
@@ -271,15 +347,45 @@ void CurlManager::downloadOneImage(const std::string& _category, const HUInt32& 
 
     // pool.enqueue([&](const std::string& category, const HUInt32& index, const std::string& requestUrl) {
     auto testFunction([&](const std::string& category, const HUInt32& index, const std::string& requestUrl) {
-            std::string filePath = getFilePath(requestUrl);
-            FILE *fp = fopen(filePath.c_str(), "r");
-            if (fp == NULL) {
-                fp = fopen(filePath.c_str(), "wb");
-                if (!fp) {
-                    HError() << "Can't open a file: " << filePath << "\n";;
+        std::string filePath = getFilePath(requestUrl);
+        FILE *fp = fopen(filePath.c_str(), "r");
+        if (fp == NULL) {
+            fp = fopen(filePath.c_str(), "wb");
+            if (!fp) {
+                HError() << "Can't open a file: " << filePath << "\n";;
+                onImageDownloaded(category, index, filePath, Result::ERROR);
+                return;
+            }
+            CURL *curlCtx = curl_easy_init();
+            curl_easy_setopt(curlCtx, CURLOPT_URL, requestUrl.c_str());
+            curl_easy_setopt(curlCtx, CURLOPT_WRITEDATA, fp);
+            curl_easy_setopt(curlCtx, CURLOPT_FOLLOWLOCATION, 1);
+            CURLcode rc = curl_easy_perform(curlCtx);
+            if (rc) {
+                HError() << "!!! Failed to download" << requestUrl << "\n";
+                onImageDownloaded(category, index, filePath, Result::ERROR);
+            } else {
+                long res_code = 0;
+                curl_easy_getinfo(curlCtx, CURLINFO_RESPONSE_CODE, &res_code);
+                if (!((res_code == 200 || res_code == 201))) {
+                    HError() << "!!! Response code:" << res_code << "\n";
                     onImageDownloaded(category, index, filePath, Result::ERROR);
-                    return;
+                } else {
+                    curl_easy_cleanup(curlCtx);
+                    fclose(fp);
+                    onImageDownloaded(category, index, filePath, Result::OK);
                 }
+            }
+
+        } else {
+            fseek(fp, 0, SEEK_END);
+            size_t size = ftell(fp);
+
+            // File exist but size is 0, then re-download images
+            if (size == 0) {
+                fp = fopen(filePath.c_str(), "wb");
+                // TODO extract duplicated code with the same performance
+                // I have tried with mutex lock but it was bad performance
                 CURL *curlCtx = curl_easy_init();
                 curl_easy_setopt(curlCtx, CURLOPT_URL, requestUrl.c_str());
                 curl_easy_setopt(curlCtx, CURLOPT_WRITEDATA, fp);
@@ -300,40 +406,10 @@ void CurlManager::downloadOneImage(const std::string& _category, const HUInt32& 
                         onImageDownloaded(category, index, filePath, Result::OK);
                     }
                 }
-
             } else {
-                fseek(fp, 0, SEEK_END);
-                size_t size = ftell(fp);
-
-                // File exist but size is 0, then re-download images
-                if (size == 0) {
-                    fp = fopen(filePath.c_str(), "wb");
-                    // TODO extract duplicated code with the same performance
-                    // I have tried with mutex lock but it was bad performance
-                    CURL *curlCtx = curl_easy_init();
-                    curl_easy_setopt(curlCtx, CURLOPT_URL, requestUrl.c_str());
-                    curl_easy_setopt(curlCtx, CURLOPT_WRITEDATA, fp);
-                    curl_easy_setopt(curlCtx, CURLOPT_FOLLOWLOCATION, 1);
-                    CURLcode rc = curl_easy_perform(curlCtx);
-                    if (rc) {
-                        HError() << "!!! Failed to download" << requestUrl << "\n";
-                        onImageDownloaded(category, index, filePath, Result::ERROR);
-                    } else {
-                        long res_code = 0;
-                        curl_easy_getinfo(curlCtx, CURLINFO_RESPONSE_CODE, &res_code);
-                        if (!((res_code == 200 || res_code == 201))) {
-                            HError() << "!!! Response code:" << res_code << "\n";
-                            onImageDownloaded(category, index, filePath, Result::ERROR);
-                        } else {
-                            curl_easy_cleanup(curlCtx);
-                            fclose(fp);
-                            onImageDownloaded(category, index, filePath, Result::OK);
-                        }
-                    }
-                } else {
-                    onImageDownloaded(category, index, filePath, Result::FILE_EXISTS);
-                }
+                onImageDownloaded(category, index, filePath, Result::FILE_EXISTS);
             }
+        }
     });
 
     testFunction(_category, _index, _requestUrl);
