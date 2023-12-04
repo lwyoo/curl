@@ -8,6 +8,8 @@
 #include <vector>
 #include <iostream>
 
+#include <curl/curl.h>
+
 #include "ThreadPool.hpp"
 
 enum class RequestType {
@@ -28,22 +30,7 @@ class ICurlManagerListner {
    public:
     ICurlManagerListner() = default;
     virtual ~ICurlManagerListner() = default;
-    /**
-     * @brief Update when requestCloud() is called and received response data
-     * @param[in] type Request type 
-     * @param[in] code Http status code
-     * @param[in] outputJson Output Json data
-     * @since 1.0
-     */
     virtual void onResponseUpdated(const RequestType& type, const HUInt32& code, const std::string& outputJson) = 0;
-
-    /**
-     * @brief Called when image is updated
-     * @param[in] index of image
-     * @param[in] pathUrl of image
-     * @param[in] result of request
-     * @since 1.0
-     */
     virtual void onImageDownloaded(const std::string& category, const HUInt32& index, const std::string& pathUrl, const Result& result) = 0;
 };
 
@@ -70,9 +57,43 @@ class CurlManager : public QObject {
     Result finalize();
     Result requestCloud(const RequestType& type, const std::string& inputJson = "");
     Result requestImageDownload(const std::string& category, const HUInt32& index, const std::string& requestUrl);
+
+    Q_PROPERTY(int entryScene READ entryScene WRITE setEntryScene FINAL)
+    int mEentryScene = 0;
+    int entryScene() const {
+        std::cout << "entryScene()" << std::endl;
+        return mEentryScene;
+    }
+    void setEntryScene(const int& value) {
+        std::cout << "setEntryScene()" << value << std::endl;
+        if (mEentryScene != value) {
+            mEentryScene = value;
+        }
+    }
+
+    Q_INVOKABLE void setEntryScene(QString& value) {
+        std::cout << "setEntryScene2()" << std::endl;
+    }
+
+
+    ///////////////////////////
+    // 다운 로드 관련 기능 테스트 //
+    ///////////////////////////
+    // qml에서 호출 하기 어려워
     Q_INVOKABLE int request(const std::string& url, const RequestType& type, const std::string& inputJson = "");
-    Q_INVOKABLE int requestForQml(const QString& url, const int& type, const QString& inputJson);
-    Q_INVOKABLE void testFunction();
+
+    // 다운을 처음 부터 받는다, 기존에 받은 파일이 있어도 처음부터 받는다
+    Q_INVOKABLE int requestForQmlWithThread(const QString& url, const int& type, const QString& inputJson);
+    Q_INVOKABLE int requestForQmlWithoutThread(const QString& url, const int& type, const QString& inputJson);
+    // 이어서 받을수 있게 한다
+    Q_INVOKABLE int requestForQml2(const QString& url, const int& type, const QString& inputJson);
+
+    ///////////////
+    // Pause 관련 //
+    ///////////////
+    /// \brief CurlManager
+    Q_INVOKABLE void pause();
+
 
     CurlManager();
     ~CurlManager();
@@ -93,4 +114,5 @@ class CurlManager : public QObject {
     ICurlManagerListner* mListener;
     ThreadPool pool;
     static CurlManager* instance;
+    CURL* curlCtx = nullptr;
 };

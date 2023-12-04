@@ -224,6 +224,21 @@ size_t WriteCallback(void* contents, size_t size, size_t nmemb, std::ofstream* f
     return size * nmemb;
 }
 
+static int progressCallback(void* clientp, curl_off_t dltotal, curl_off_t dlnow, curl_off_t /*ultotal*/, curl_off_t /*ulnow*/) {
+    double progress = (dltotal > 0) ? static_cast<double>(dlnow) * 100 / dltotal : 0;
+
+    static int lastPercentage = -1;  // 이전에 호출된 콜백에서 기록된 퍼센트 값
+
+    // 1% 단위로 호출되도록 조절
+    int currentPercentage = static_cast<int>(progress);
+    if (currentPercentage != lastPercentage) {
+        std::cout << "Download progress: " << currentPercentage << "%" << std::endl;
+        lastPercentage = currentPercentage;
+    }
+
+    return 0;
+}
+
 int main() {
     // 파일 다운로드 URL
     // const char* url = "https://www.example.com/largefile.zip";
@@ -258,6 +273,8 @@ int main() {
     // 콜백 함수 설정
     curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WriteCallback);
     curl_easy_setopt(curl, CURLOPT_WRITEDATA, &file);
+    curl_easy_setopt(curl, CURLOPT_XFERINFOFUNCTION, progressCallback);
+    curl_easy_setopt(curl, CURLOPT_NOPROGRESS, 0L);
 
     // HTTP GET 요청 수행
     CURLcode res = curl_easy_perform(curl);

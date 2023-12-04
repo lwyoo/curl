@@ -1,6 +1,6 @@
 #include "CurlManager.h"
 
-#include <curl/curl.h>
+
 #include <string.h>
 #include <sys/stat.h>
 
@@ -21,6 +21,7 @@ CurlManager::CurlManager() : pool(30) {
 }
 
 CurlManager::~CurlManager() {
+    std::cout << "~CurlManager()" << std::endl;
 }
 
 CurlManager *CurlManager::getInstance() {
@@ -45,6 +46,7 @@ Result CurlManager::initialize() {
     std::string cloudName = "";
     std::string backendMount = "";
     curl_global_init(CURL_GLOBAL_DEFAULT);
+    curlCtx = curl_easy_init();
 
     try {
         // std::ifstream in(mCinemoJsonPath);
@@ -62,7 +64,6 @@ Result CurlManager::initialize() {
         // mUserTokenUrl = j.at("identityUserToken");
         // backendMount = j.at("backendMount");
         mServiceListUrl = "http://127.0.0.1:5000/download/sdk_artifact.tar.gz";
-
     } catch (json::exception &e) {
         HError() << "Json parser error! \n";
     }
@@ -139,6 +140,31 @@ static size_t WriteMemoryCallback(void *ptr, size_t size, size_t nmemb, void *st
 {
     fwrite(ptr, size, nmemb, (FILE *)stream);
     return (nmemb*size);
+}
+
+size_t WriteCallback(void* contents, size_t size, size_t nmemb, std::ofstream* file) {
+    file->write((char*)contents, size * nmemb);
+    return size * nmemb;
+}
+
+//static int progressCallback(void* clientp, curl_off_t dltotal, curl_off_t dlnow, curl_off_t /*ultotal*/, curl_off_t /*ulnow*/) {
+//    double progress = (dlnow > 0) ? static_cast<double>(dlnow) * 100 / dltotal : 0;
+//    std::cout << "Download progress: " << progress << "%" << std::endl;
+//    return 0;
+//}
+static int progressCallback(void* clientp, curl_off_t dltotal, curl_off_t dlnow, curl_off_t /*ultotal*/, curl_off_t /*ulnow*/) {
+    double progress = (dltotal > 0) ? static_cast<double>(dlnow) * 100 / dltotal : 0;
+
+    static int lastPercentage = -1;  // 이전에 호출된 콜백에서 기록된 퍼센트 값
+
+    // 1% 단위로 호출되도록 조절
+    int currentPercentage = static_cast<int>(progress);
+    if (currentPercentage != lastPercentage) {
+        std::cout << "Download progress: " << currentPercentage << "%" << std::endl;
+        lastPercentage = currentPercentage;
+    }
+
+    return 0;
 }
 
 
@@ -257,7 +283,7 @@ int CurlManager::request(const std::string &url, const RequestType &type, const 
     return ret;
 }
 
-int CurlManager::requestForQml(const QString &url, const int &type, const QString &inputJson) {
+int CurlManager::requestForQmlWithThread(const QString &url, const int &type, const QString &inputJson) {
     int ret = 0;
     // 이제 qString을 사용할 수 있습니다.
     std::string stdStringUrl = url.toStdString();
@@ -280,7 +306,7 @@ int CurlManager::requestForQml(const QString &url, const int &type, const QStrin
         headerlist = curl_slist_append(headerlist, "Content-Type: application/x-tar");
         headerlist = curl_slist_append(headerlist, "Content-Encoding: gzip");
 
-        CURL *curlCtx = curl_easy_init();
+//        CURL *curlCtx = curl_easy_init();
         curl_easy_setopt(curlCtx, CURLOPT_URL, _url.c_str());
         curl_easy_setopt(curlCtx, CURLOPT_HTTPHEADER, headerlist);
         curl_easy_setopt(curlCtx, CURLOPT_SSL_VERIFYPEER, false);
@@ -288,6 +314,9 @@ int CurlManager::requestForQml(const QString &url, const int &type, const QStrin
         curl_easy_setopt(curlCtx, CURLOPT_WRITEFUNCTION, WriteMemoryCallback);
         // curl_easy_setopt(curlCtx, CURLOPT_WRITEDATA, (void *)&chunk);
         curl_easy_setopt(curlCtx, CURLOPT_WRITEDATA, fp);
+
+        curl_easy_setopt(curlCtx, CURLOPT_XFERINFOFUNCTION, progressCallback);
+        curl_easy_setopt(curlCtx, CURLOPT_NOPROGRESS, 0L);
 
         if (_type == static_cast<int>(RequestType::USER_TOKEN)) {
             curl_easy_setopt(curlCtx, CURLOPT_POST, 1L);
@@ -316,8 +345,187 @@ int CurlManager::requestForQml(const QString &url, const int &type, const QStrin
     return ret;
 }
 
-void CurlManager::testFunction() {
-    std::cout << "~~~~~~~~" << std::endl;
+// thread 제거
+int CurlManager::requestForQmlWithoutThread(const QString &url, const int &type, const QString &inputJson) {
+    int ret = 0;
+    // 이제 qString을 사용할 수 있습니다.
+    std::string _url = url.toStdString();
+    std::string _inputJson = inputJson.toStdString();
+    int _type = type;
+
+        // struct MemoryStruct chunk;
+        // chunk.memory = (char *)malloc(1);
+        // chunk.size = 0;
+
+        const char* localFileName = "downloaded_file.zip";
+        FILE* fp = fopen(localFileName, "wb");
+        if (!fp) {
+            std::cerr << "Error opening file for writing" << std::endl;
+            return 1;
+        }
+
+        struct curl_slist *headerlist = nullptr;
+        // headerlist = curl_slist_append(headerlist, "Content-Type: application/json");
+        headerlist = curl_slist_append(headerlist, "Content-Type: application/x-tar");
+        headerlist = curl_slist_append(headerlist, "Content-Encoding: gzip");
+
+//        CURL *curlCtx = curl_easy_init();
+        curl_easy_setopt(curlCtx, CURLOPT_URL, _url.c_str());
+        curl_easy_setopt(curlCtx, CURLOPT_HTTPHEADER, headerlist);
+        curl_easy_setopt(curlCtx, CURLOPT_SSL_VERIFYPEER, false);
+        curl_easy_setopt(curlCtx, CURLOPT_SSL_VERIFYHOST, false);
+        curl_easy_setopt(curlCtx, CURLOPT_WRITEFUNCTION, WriteMemoryCallback);
+        // curl_easy_setopt(curlCtx, CURLOPT_WRITEDATA, (void *)&chunk);
+        curl_easy_setopt(curlCtx, CURLOPT_WRITEDATA, fp);
+
+        curl_easy_setopt(curlCtx, CURLOPT_XFERINFOFUNCTION, progressCallback);
+        curl_easy_setopt(curlCtx, CURLOPT_NOPROGRESS, 0L);
+
+        if (_type == static_cast<int>(RequestType::USER_TOKEN)) {
+            curl_easy_setopt(curlCtx, CURLOPT_POST, 1L);
+            curl_easy_setopt(curlCtx, CURLOPT_POSTFIELDS, _inputJson.c_str());
+        }
+
+        long res_code = 0;
+
+        CURLcode rc = curl_easy_perform(curlCtx);
+        if (rc) {
+            HError() << "Failed \n";
+            ret = -1;
+        } else {
+            curl_easy_getinfo(curlCtx, CURLINFO_RESPONSE_CODE, &res_code);
+            if (!((res_code == 200 || res_code == 201))) {
+                HError() << "!!! Response code:" << res_code << "\n";
+            }
+            curl_easy_cleanup(curlCtx);
+            curl_slist_free_all(headerlist);
+        }
+
+        onResponseUpdated(static_cast<RequestType>(_type), static_cast<int>(res_code), "");
+
+    // testFunction(url, type, inputJson);
+    std::cout << "test ~~~~~~~~~~~~~~~~" << std::endl;
+    return ret;
+}
+
+//int CurlManager::requestForQml2(const QString &_url, const int &type, const QString &_inputJson) {
+//    int ret = 0;
+//    // 이제 qString을 사용할 수 있습니다.
+//    std::string url = _url.toStdString();
+//    std::string inputJson = _inputJson.toStdString();
+
+
+//    // 다운로드를 저장할 파일
+//    const char* output_file = "downloaded_file.zip";
+
+//    // 파일을 열어 이어서 쓰기 모드로 열기
+//    std::ofstream file(output_file, std::ios::app | std::ios::binary);
+
+//    // libcurl 초기화
+//    CURL* curl = curl_easy_init();
+//    if (!curl) {
+//        std::cerr << "Failed to initialize libcurl" << std::endl;
+//        return 1;
+//    }
+
+//    // 다운로드 중간에 이전에 받은 부분부터 다운로드하기 위해 파일 크기 확인
+//    long long previousFileSize = 0;
+//    file.seekp(0, std::ios::end);
+//    previousFileSize = file.tellp();
+//    file.seekp(0, std::ios::beg);
+
+//    // Range 헤더 설정
+//    std::string rangeHeader = "Range: bytes=" + std::to_string(previousFileSize) + "-";
+//    curl_easy_setopt(curl, CURLOPT_HTTPHEADER, curl_slist_append(nullptr, rangeHeader.c_str()));
+
+//    // 타겟 URL 설정
+//    curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
+
+//    // 콜백 함수 설정
+//    curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WriteCallback);
+//    curl_easy_setopt(curl, CURLOPT_WRITEDATA, &file);
+
+//    // HTTP GET 요청 수행
+//    CURLcode res = curl_easy_perform(curl);
+//    if (res != CURLE_OK) {
+//        std::cerr << "curl_easy_perform() failed: " << curl_easy_strerror(res) << std::endl;
+//    } else {
+//        std::cout << "Download completed successfully." << std::endl;
+//    }
+
+//    // 사용이 끝난 후 정리
+//    curl_easy_cleanup(curl);
+//    file.close();
+
+//    return ret;
+//}
+
+int CurlManager::requestForQml2(const QString &url, const int &type, const QString &inputJson) {
+    int ret = 0;
+    // 이제 qString을 사용할 수 있습니다.
+    // 이제 qString을 사용할 수 있습니다.
+    std::string stdStringUrl = url.toStdString();
+    std::string stdStringInputJson = inputJson.toStdString();
+
+    pool.enqueue([&](const std::string &_url, const int &_type, const std::string &_inputJson) {
+
+
+        // 다운로드를 저장할 파일
+        const char* output_file = "downloaded_file.zip";
+
+        // 파일을 열어 이어서 쓰기 모드로 열기
+        std::ofstream file(output_file, std::ios::app | std::ios::binary);
+
+        // libcurl 초기화
+//        CURL* curl = curl_easy_init();
+        if (!curlCtx) {
+            std::cerr << "Failed to initialize libcurl" << std::endl;
+            return 1;
+        }
+
+        // 다운로드 중간에 이전에 받은 부분부터 다운로드하기 위해 파일 크기 확인
+        long long previousFileSize = 0;
+        file.seekp(0, std::ios::end);
+        previousFileSize = file.tellp();
+        file.seekp(0, std::ios::beg);
+
+        // Range 헤더 설정
+        std::string rangeHeader = "Range: bytes=" + std::to_string(previousFileSize) + "-";
+        curl_easy_setopt(curlCtx, CURLOPT_HTTPHEADER, curl_slist_append(nullptr, rangeHeader.c_str()));
+
+        // 타겟 URL 설정
+        curl_easy_setopt(curlCtx, CURLOPT_URL, _url.c_str());
+
+        // 콜백 함수 설정
+        curl_easy_setopt(curlCtx, CURLOPT_WRITEFUNCTION, WriteCallback);
+        curl_easy_setopt(curlCtx, CURLOPT_WRITEDATA, &file);
+
+        // HTTP GET 요청 수행
+        CURLcode res = curl_easy_perform(curlCtx);
+        if (res != CURLE_OK) {
+            std::cerr << "curl_easy_perform() failed: " << curl_easy_strerror(res) << std::endl;
+        } else {
+            std::cout << "Download completed successfully." << std::endl;
+        }
+
+        // 사용이 끝난 후 정리
+        curl_easy_cleanup(curlCtx);
+        file.close();
+    }, stdStringUrl, type, stdStringInputJson);
+
+    return ret;
+}
+
+void CurlManager::pause() {
+    std::cout << "CurlManager::Pause()" << std::endl;
+
+    // 일시 중지 하기
+//    curl_easy_pause(curlCtx, CURLPAUSE_ALL);
+//    pause_download.store(true);
+
+    // 다시 시작 하기
+//    curl_easy_pause(curlCtx, CURLPAUSE_CONT);
+//    pause_download.store(false);
 }
 
 std::string CurlManager::split(std::string origin, const std::string &delimiter, const bool frontErase) {
