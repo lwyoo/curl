@@ -6,8 +6,6 @@
 
 int main(int argc, char *argv[])
 {
-
-
     qRegisterMetaType<std::string>("std::string");
     QGuiApplication app(argc, argv);
     qmlRegisterSingletonType<CurlManager>("CurlManager", 1, 0,
